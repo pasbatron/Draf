@@ -43,15 +43,19 @@ if __name__ == "__main__":
 import os
 import cv2
 import keyboard
+from datetime import datetime
 
 def ambil_gambar():
     # Mengambil gambar dari kamera (webcam)
     cap = cv2.VideoCapture(0)
     _, frame = cap.read()
 
-    # Menyimpan gambar di direktori D:\ dengan nama file yang unik
+    # Mendapatkan tanggal dan waktu saat ini
+    waktu_sekarang = datetime.now().strftime("%Y%m%d%H%M%S")
+
+    # Menyimpan gambar di direktori D:\ dengan nama file yang mengandung tanggal dan waktu
     path = "D:\\"
-    filename = "snapshot.png"
+    filename = f"snapshot_{waktu_sekarang}.png"
     full_path = os.path.join(path, filename)
     cv2.imwrite(full_path, frame)
     print(f"Gambar disimpan di: {full_path}")
