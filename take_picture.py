@@ -40,6 +40,8 @@ if __name__ == "__main__":
 
 
 
+pip install opencv-python-headless keyboard
+
 import os
 import cv2
 import keyboard
@@ -53,8 +55,8 @@ def ambil_gambar():
     # Mendapatkan tanggal dan waktu saat ini
     waktu_sekarang = datetime.now().strftime("%Y%m%d%H%M%S")
 
-    # Menyimpan gambar di direktori D:\ dengan nama file yang mengandung tanggal dan waktu
-    path = "D:\\"
+    # Menyimpan gambar di direktori home dengan nama file yang mengandung tanggal dan waktu
+    path = os.path.expanduser("~")
     filename = f"snapshot_{waktu_sekarang}.png"
     full_path = os.path.join(path, filename)
     cv2.imwrite(full_path, frame)
@@ -78,6 +80,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
 
 
 
