@@ -36,3 +36,48 @@ if __name__ == "__main__":
 
 
 
+
+
+
+
+import os
+import cv2
+import keyboard
+
+def ambil_gambar():
+    # Mengambil gambar dari kamera (webcam)
+    cap = cv2.VideoCapture(0)
+    _, frame = cap.read()
+
+    # Menyimpan gambar di direktori D:\ dengan nama file yang unik
+    path = "D:\\"
+    filename = "snapshot.png"
+    full_path = os.path.join(path, filename)
+    cv2.imwrite(full_path, frame)
+    print(f"Gambar disimpan di: {full_path}")
+
+    # Menutup kamera
+    cap.release()
+
+def main():
+    print("Program Pengambil Gambar (Tekan Enter untuk Mengambil Gambar, Tekan 'q' untuk Keluar)")
+
+    while True:
+        # Menunggu tombol Enter atau 'q' ditekan
+        key = keyboard.read_event(suppress=True).name
+
+        if key == "enter":
+            ambil_gambar()
+        elif key == "q":
+            print("Program dihentikan.")
+            break
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
